@@ -389,10 +389,10 @@ public class CcController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public CommonGenerationDTO getGeneration(@PathParam("generationId") final Long generationId) {
-
-        log.error("BEGIN getGeneration for {}", generationId);
+        log.info("BLAH");
+        log.info("BEGIN getGeneration for {}", generationId);
         CcGenerationEntity generationEntity = service.findGenerationById(generationId);
-        log.error("END getGeneration for {}", generationId);
+        log.info("END getGeneration for {}", generationId);
         return sensitiveInfoService.filterSensitiveInfo(conversionService.convert(generationEntity, CommonGenerationDTO.class),
                 Collections.singletonMap(Constants.Variables.SOURCE, generationEntity.getSource()));
     }
