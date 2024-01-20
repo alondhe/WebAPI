@@ -14,8 +14,6 @@ RUN mkdir .git \
     && mvn package \
      -P${MAVEN_PROFILE}
 
-RUN apt-get -y update; apt-get -y install curl
-
 ARG GIT_BRANCH=unknown
 ARG GIT_COMMIT_ID_ABBREV=unknown
 
@@ -62,6 +60,8 @@ COPY --from=builder /code/war/META-INF META-INF
 EXPOSE 8080
 
 USER 101
+
+RUN apt-get -y update; apt-get -y install curl
 
 # Directly run the code as a WAR.
 CMD exec java ${DEFAULT_JAVA_OPTS} ${JAVA_OPTS} \
