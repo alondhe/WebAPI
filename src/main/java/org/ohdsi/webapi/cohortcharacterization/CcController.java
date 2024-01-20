@@ -75,10 +75,15 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Path("/cohort-characterization")
 @Controller
 @Transactional
 public class CcController {
+
+    private static final Logger log = LoggerFactory.getLogger(CcController.class);
 
     private CcService service;
     private FeAnalysisService feAnalysisService;
@@ -384,9 +389,9 @@ public class CcController {
     @Consumes(MediaType.APPLICATION_JSON)
     public CommonGenerationDTO getGeneration(@PathParam("generationId") final Long generationId) {
 
-        log.error("YES BEGIN getGeneration");
+        log.error("BEGIN getGeneration for {}", generationId);
         CcGenerationEntity generationEntity = service.findGenerationById(generationId);
-        log.error("YES END findGenerationById");
+        log.error("END getGeneration for {}", generationId);
         return sensitiveInfoService.filterSensitiveInfo(conversionService.convert(generationEntity, CommonGenerationDTO.class),
                 Collections.singletonMap(Constants.Variables.SOURCE, generationEntity.getSource()));
     }
