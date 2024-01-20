@@ -634,7 +634,6 @@ public class CcServiceImpl extends AbstractDaoService implements CcService, Gene
         try {
             return ccGenerationRepository.findById(id, EntityUtils.fromAttributePaths("source"));
         }
-        }
         catch (Exception ex) {
             log.error("Failed to obtain generation id: {}", ex.getMessage());
         }
