@@ -59,9 +59,10 @@ COPY --from=builder /code/war/META-INF META-INF
 
 EXPOSE 8080
 
-USER 101
+RUN apt-get -y update
+RUN apt-get -y install curl
 
-RUN apt-get -y update; apt-get -y install curl
+USER 101
 
 # Directly run the code as a WAR.
 CMD exec java ${DEFAULT_JAVA_OPTS} ${JAVA_OPTS} \
