@@ -384,12 +384,7 @@ public class CcController {
     @Consumes(MediaType.APPLICATION_JSON)
     public CommonGenerationDTO getGeneration(@PathParam("generationId") final Long generationId) {
 
-        try {
-            CcGenerationEntity generationEntity = service.findGenerationById(generationId);
-        }
-        catch (Exception ex) {
-            logger.error("Failed to obtain generation id: {}", ex.getMessage());
-        }
+        CcGenerationEntity generationEntity = service.findGenerationById(generationId);
         return sensitiveInfoService.filterSensitiveInfo(conversionService.convert(generationEntity, CommonGenerationDTO.class),
                 Collections.singletonMap(Constants.Variables.SOURCE, generationEntity.getSource()));
     }
