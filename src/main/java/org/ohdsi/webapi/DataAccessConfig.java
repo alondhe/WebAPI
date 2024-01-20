@@ -86,9 +86,9 @@ public class DataAccessConfig {
         for (String driverName : supportedDrivers) {
             try {
                 Class.forName(driverName);
-                logger.info("driver loaded: {}", driverName);
+                logger.info("JDBC driver loaded: {}", driverName);
             } catch (Exception ex) {
-                logger.info("error loading {} driver. {}", driverName, ex.getMessage());
+                logger.info("error loading {} JDBC driver. {}", driverName, ex.getMessage());
             }
         }
 
