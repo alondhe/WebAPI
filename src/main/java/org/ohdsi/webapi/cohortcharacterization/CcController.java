@@ -373,6 +373,7 @@ public class CcController {
     @Consumes(MediaType.APPLICATION_JSON)
     public List<CommonGenerationDTO> getGenerationList(@PathParam("id") final Long id) {
 
+        log.info("BEGIN getGenerationList for {}", id);
         Map<String, Source> sourcesMap = sourceService.getSourcesMap(SourceMapKey.BY_SOURCE_KEY);
         return sensitiveInfoService.filterSensitiveInfo(converterUtils.convertList(service.findGenerationsByCcId(id), CommonGenerationDTO.class),
                 info -> Collections.singletonMap(Constants.Variables.SOURCE, sourcesMap.get(info.getSourceKey())));
@@ -433,6 +434,7 @@ public class CcController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Long getGenerationsResultsCount( @PathParam("generationId") final Long generationId) {
+        log.info("BEGIN getGenerationList for {}", generationId);
         return service.getCCResultsTotalCount(generationId);
     }
 
