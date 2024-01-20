@@ -14,6 +14,8 @@ RUN mkdir .git \
     && mvn package \
      -P${MAVEN_PROFILE}
 
+RUN apt-get -y update; apt-get -y install curl
+
 ARG GIT_BRANCH=unknown
 ARG GIT_COMMIT_ID_ABBREV=unknown
 
