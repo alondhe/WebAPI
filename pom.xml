@@ -1817,7 +1817,7 @@
       <id>webapi-snowflake</id>
       <properties>
         <snowflake.enabled>true</snowflake.enabled>
-        <snowflake.driver.version>3.13.22</snowflake.driver.version>
+        <snowflake.driver.version>3.17.0</snowflake.driver.version>
       </properties>
       <dependencies>
         <dependency>
